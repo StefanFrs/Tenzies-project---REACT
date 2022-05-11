@@ -68,4 +68,11 @@ body {
   .roll-dice:focus {
     outline: none;
   }
-  
+  .flex{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .scores{
+    list-style: none;
+  }
