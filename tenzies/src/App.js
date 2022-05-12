@@ -20,11 +20,12 @@ export default function App() {
         if(seconds==59){
           setMinutes(minutes+1)
           setSeconds(0)
-          var score = seconds + (minutes * 60)
-          setScores(prevState => ({
-            arrayvar: [...prevState.arrayvar, score]
-          }))
         }
+        var score = seconds + (minutes * 60)
+        setScores(prevState => {
+         return [...prevState, score]
+        })
+        console.log(score)
     },1000)
       return () => clearInterval(timer)
     }},[seconds])
@@ -39,6 +40,7 @@ export default function App() {
       setTenzies(true)
       setMinutes(minutes)
       setSeconds(seconds)
+      console.log("scores on the final result:"+scores)
       setScores(scores)
       console.log("you won!!")
     }
@@ -73,7 +75,6 @@ export default function App() {
       setDice(allNewDice())
       setMinutes(0)
       setSeconds(0)
-      console.log("scores on the final result"+scores)
     }
   }
    
@@ -85,7 +86,6 @@ export default function App() {
     }))
   }
 
-  console.log("score during the game" + scores)
 
 const diceItem = dice.map(die => 
   <Die key={die.id} onClick={holdDice} value = {die.value} isHeld={die.isHeld} holdDice={() => holdDice(die.id)}/> )
