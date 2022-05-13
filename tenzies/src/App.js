@@ -4,7 +4,7 @@ import Die from "./Die"
 import {nanoid} from "nanoid"
 
 export default function App() {
-  
+
   const [dice,setDice] = React.useState(allNewDice())
   const [tenzies, setTenzies] = React.useState(false)
   const [seconds,setSeconds] = React.useState(0)
@@ -30,9 +30,8 @@ export default function App() {
       return () => clearInterval(timer)
     }},[seconds])
   
- 
-
   React.useEffect(()=>{
+    
    const allHeld = dice.every(die => die.isHeld) //true or false, depends if all of dice are true
    const firstValue = dice[0].value
    const equalVal = dice.every(die => die.value === firstValue)
@@ -40,9 +39,15 @@ export default function App() {
       setTenzies(true)
       setMinutes(minutes)
       setSeconds(seconds)
-      console.log("scores on the final result:"+scores)
-      setScores(scores)
       console.log("you won!!")
+      if(parseInt(scores[scores.length-1])<10){
+        alert("Your skill = TENZI Master!");
+      }else if(parseInt(scores[scores.length-1])>10 && parseInt(scores[scores.length-1])<25){
+        alert("Your skill =  Dice dragon!");
+      }else if(parseInt(scores[scores.length-1])>25){
+        alert("Your skill =  Cubie Newbie");
+      }
+      setScores(scores)
     }
 
   },[dice])
@@ -98,17 +103,12 @@ const diceItem = dice.map(die =>
        {diceItem}
        <div>
          <div>
+           
+           <div><h3><i>Try to be the first person to get all ten of your dice to the same number.</i></h3></div>
             <div><h3>Your time:{minutes} minutes and {seconds} seconds</h3></div>
             <button className="roll-dice" onClick={changeDice}>{ tenzies ? `New Game` : `Change` }</button>
           </div>
-          <div className="flex">
-            <h2>Scores:</h2>
-            <div className="scores">
-              <ol>
-                  {showScores}
-              </ol>
-            </div>
-          </div>
+         
        </div>
       
        {tenzies && <Confetti />}
