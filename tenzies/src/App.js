@@ -104,9 +104,14 @@ const diceItem = dice.map(die =>
        <div>
          <div>
            
-           <div><h3><i>Try to be the first person to get all ten of your dice to the same number.</i></h3></div>
+           <div><h3><i>Try to get all ten of your dice to the same number as fast as you can!</i></h3></div>
             <div><h3>Your time:{minutes} minutes and {seconds} seconds</h3></div>
             <button className="roll-dice" onClick={changeDice}>{ tenzies ? `New Game` : `Change` }</button>
+            <ul><p>Records:</p>
+                <li>TENZI Master(time less then 10s);</li>
+                <li>Dice dragon (time between 10s and 25s);</li>
+                <li>Cubie Newbie (time more then 25s)</li>
+            </ul>
           </div>
          
        </div>

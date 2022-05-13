@@ -76,3 +76,11 @@ body {
   .scores{
     list-style: none;
   }
+
+  li{
+    list-style: none;
+    font-weight: normal;
+  }
+  ul{
+    padding: 0;
+  }
